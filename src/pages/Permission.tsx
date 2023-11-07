@@ -8,7 +8,7 @@ import { useAccount, useSignTypedData } from "wagmi"
 
 import { AppRouter } from "../../../server/api"
 import { DEFAULT_PERMISSION } from "@/lib/constants"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Permission<
     T extends ReturnType<typeof createTRPCProxyClient<AppRouter>>,
@@ -42,6 +42,12 @@ export default function Permission<
 
         reset()
     }
+
+    useEffect(() => { 
+        await client.permissions.onCreate(data => { 
+            console.log('Permission created: ', data)
+        })
+    }, [])
 
     return (
         <>

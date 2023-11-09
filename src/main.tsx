@@ -8,7 +8,7 @@ import { mainnet } from 'wagmi/chains'
 
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 
-import { connector } from '../../server/src/server/connector.ts'
+import { getConnector } from '../../server/src/api/connector'
 
 import App from './App.tsx'
 import Intents from './pages/Intents.tsx'
@@ -27,11 +27,12 @@ const metadata = {
 const chains = [mainnet]
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
 
+const connector = getConnector('localhost:3000/trpc')
 
 const router = createBrowserRouter([
 	{ path: '/', element: <App /> },
-	{ path: '/permission', element: <Permission client={connector} /> },
-	{ path: '/intents', element: <Intents client={connector} /> }
+	{ path: '/permission', element: <Permission connector={connector} /> },
+	{ path: '/intents', element: <Intents connector={connector} /> }
 ])
 
 createWeb3Modal({ wagmiConfig, projectId, chains })

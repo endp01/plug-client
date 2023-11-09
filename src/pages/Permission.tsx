@@ -6,16 +6,15 @@ import { useAccount, useSignTypedData } from 'wagmi'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { DEFAULT_PERMISSION } from '@/lib/constants'
-import { createTRPCProxyClient } from '@trpc/client'
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 
-import { AppRouter } from '../../../server/src/server/api'
+import { getConnector } from '../../../server/src/api/connector'
 
 export default function Permission<
 	P extends {
-		client: ReturnType<typeof createTRPCProxyClient<AppRouter>>
+		connector: ReturnType<typeof getConnector>
 	}
->({ client }: P) {
+>({ connector }: P) {
 	const { open } = useWeb3Modal()
 	const { address } = useAccount()
 
@@ -41,19 +40,19 @@ export default function Permission<
 		e.stopPropagation()
 
 		const json = JSON.parse(query)
-		await client.permissions.create.mutate(json)
+		await connector.permission.create.mutate(json)
 
 		reset()
 	}
 
 	useEffect(() => {
 		// * Open the onCreate susbcription.
-		client.permissions.onCreate.subscribe(undefined, {
+		connector.permission.onCreate.subscribe(undefined, {
 			onData: permission => {
 				console.log('Permission created:', permission)
 			}
 		})
-	}, [client])
+	}, [connector])
 
 	return (
 		<>

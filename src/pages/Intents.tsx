@@ -1,18 +1,18 @@
+import { useState } from 'react'
+
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
-import { createTRPCProxyClient } from '@trpc/client'
 
 import { constants } from '@nftchance/emporium-types'
 import { useWeb3Modal } from "@web3modal/wagmi/react"
 import { useAccount, useSignTypedData } from "wagmi"
 
-import { AppRouter } from "../../../server/src/server/api"
+import { getConnector } from "../../../server/src/api/connector"
 import { DEFAULT_INTENTS } from "@/lib/constants"
-import { useState } from 'react'
 
 export default function Intents<
     P extends {
-        client: ReturnType<typeof createTRPCProxyClient<AppRouter>>
+        client: ReturnType<typeof getConnector>
     }
 >({ client }: P) {
     const { open } = useWeb3Modal()
@@ -36,8 +36,8 @@ export default function Intents<
         e.preventDefault()
         e.stopPropagation()
 
-        const json = JSON.parse(query)
-        await client.permissions.create.mutate(json)
+        // TODO: Handle the creation.
+        client
 
         reset()
     }

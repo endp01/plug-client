@@ -20,6 +20,9 @@ dependencies:
   '@radix-ui/react-slot':
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.2.37)(react@18.2.0)
+  '@trpc/client':
+    specifier: ^10.43.1
+    version: 10.43.1(@trpc/server@10.43.1)
   '@web3modal/wagmi':
     specifier: ^3.2.0
     version: 3.2.0(@types/react@18.2.37)(@wagmi/core@1.4.6)(typescript@5.2.2)(viem@1.18.9)
@@ -1395,6 +1398,19 @@ packages:
       prettier: 3.0.3
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@trpc/client@10.43.1(@trpc/server@10.43.1):
+    resolution: {integrity: sha512-pkPtbDS0ck/2WZo2cWaPV11NFMII2I/nzse1Ggs5Cr0YczsZk3Z0DM77Sfb9FTSjmccYfkEtumHqxfTj6fRbbg==}
+    peerDependencies:
+      '@trpc/server': 10.43.1
+    dependencies:
+      '@trpc/server': 10.43.1
+    dev: false
+
+  /@trpc/server@10.43.1:
+    resolution: {integrity: sha512-rKOSCpJOb1MdTyJFqdf3QNNESDfPkbP+yBOZBM2x6iIOS4VlCfJqxsaSrb3uLPR6s8Ni7DhTu+cu/q1r0xOGcw==}
+    engines: {node: '>=18.0.0'}
     dev: false
 
   /@types/babel__core@7.20.4:

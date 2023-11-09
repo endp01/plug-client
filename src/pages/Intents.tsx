@@ -6,14 +6,13 @@ import { constants } from '@nftchance/emporium-types'
 import { useWeb3Modal } from "@web3modal/wagmi/react"
 import { useAccount, useSignTypedData } from "wagmi"
 
-import { AppRouter } from "../../../server/api"
+import { AppRouter } from "../../../server/src/server/api"
 import { DEFAULT_INTENTS } from "@/lib/constants"
 import { useState } from 'react'
 
 export default function Intents<
-    T extends ReturnType<typeof createTRPCProxyClient<AppRouter>>,
     P extends {
-        client: T
+        client: ReturnType<typeof createTRPCProxyClient<AppRouter>>
     }
 >({ client }: P) {
     const { open } = useWeb3Modal()

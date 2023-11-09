@@ -9,7 +9,7 @@ import { DEFAULT_PERMISSION } from '@/lib/constants'
 import { createTRPCProxyClient } from '@trpc/client'
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 
-import { AppRouter } from '../../../server/src/api'
+import { AppRouter } from '../../../server/src/server/api'
 
 export default function Permission<
 	P extends {
@@ -49,8 +49,8 @@ export default function Permission<
 	useEffect(() => {
 		// * Open the onCreate susbcription.
 		client.permissions.onCreate.subscribe(undefined, {
-			onData: id => {
-				console.log('Permission created:', id)
+			onData: permission => {
+				console.log('Permission created:', permission)
 			}
 		})
 	}, [client])

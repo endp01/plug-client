@@ -8,7 +8,7 @@ import { mainnet } from 'wagmi/chains'
 
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 
-import { getConnector } from '../../server/src/api/connector'
+import { getConnector } from '../../server/src/connector'
 
 import App from './App.tsx'
 import Intents from './pages/Intents.tsx'

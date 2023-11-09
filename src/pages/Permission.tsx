@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { DEFAULT_PERMISSION } from '@/lib/constants'
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 
-import { getConnector } from '../../../server/src/api/connector'
+import { getConnector } from '../../../server/src/connector'
 
 export default function Permission<
 	P extends {

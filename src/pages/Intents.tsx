@@ -7,14 +7,14 @@ import { constants } from '@nftchance/emporium-types'
 import { useWeb3Modal } from "@web3modal/wagmi/react"
 import { useAccount, useSignTypedData } from "wagmi"
 
-import { getConnector } from "../../../server/src/api/connector"
+import { getConnector } from "../../../server/src/connector"
 import { DEFAULT_INTENTS } from "@/lib/constants"
 
 export default function Intents<
     P extends {
-        client: ReturnType<typeof getConnector>
+        connector: ReturnType<typeof getConnector>
     }
->({ client }: P) {
+>({ connector }: P) {
     const { open } = useWeb3Modal()
     const { address } = useAccount()
 
@@ -37,7 +37,7 @@ export default function Intents<
         e.stopPropagation()
 
         // TODO: Handle the creation.
-        client
+        connector
 
         reset()
     }

@@ -36,8 +36,8 @@ export default function Intents<
         e.preventDefault()
         e.stopPropagation()
 
-        // TODO: Handle the creation.
-        connector
+        const json = JSON.parse(query)
+        await connector.intents.create.mutate(json)
 
         reset()
     }

@@ -1,21 +1,19 @@
+import { constants } from '@nftchance/emporium-types'
+
 import { useState } from 'react'
+import { useAccount, useSignTypedData } from 'wagmi'
 
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import { DEFAULT_INTENTS } from '@/lib/constants'
 
-import { constants } from '@nftchance/emporium-types'
-import { useWeb3Modal } from "@web3modal/wagmi/react"
-import { useAccount, useSignTypedData } from "wagmi"
-
-import { getConnector } from "../../../server/src/connector"
-import { DEFAULT_INTENTS } from "@/lib/constants"
+import { getConnector } from '../../../server/src/connector'
 
 export default function Intents<
     P extends {
         connector: ReturnType<typeof getConnector>
     }
 >({ connector }: P) {
-    const { open } = useWeb3Modal()
     const { address } = useAccount()
 
     const [query, setQuery] = useState(JSON.stringify(DEFAULT_INTENTS, null, 4));
@@ -44,11 +42,6 @@ export default function Intents<
 
     return (
         <>
-            <Button onClick={() => open({ view: 'Networks' })}>Networks</Button>
-            <Button onClick={() => open()}>Connect</Button>
-
-            <p>Connected Address: {address ? address : 'Not Connected'}</p>
-
             <form
                 onSubmit={handleSubmit}
                 className="space-y-8"

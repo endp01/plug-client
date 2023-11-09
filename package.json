@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
-    "@nftchance/emporium-core": "^0.1.7",
-    "@nftchance/emporium-types": "^0.4.9",
+    "@nftchance/emporium-types": "^0.4.10",
     "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-navigation-menu": "^1.1.4",
     "@radix-ui/react-slot": "^1.0.2",
     "@trpc/client": "^10.43.1",
     "@web3modal/wagmi": "^3.2.0",

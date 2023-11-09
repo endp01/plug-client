@@ -10,10 +10,13 @@ import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 
 import { getConnector } from '../../server/src/connector'
 
+import { Wrapper } from './components/wrapper'
+
 import App from './App'
 import Intents from './pages/Intents'
 import Permission from './pages/Permission'
 
+import './utils'
 import './index.css'
 
 const connector = getConnector()
@@ -40,6 +43,8 @@ createWeb3Modal({ wagmiConfig, projectId, chains })
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<WagmiConfig config={wagmiConfig}>
+			<Wrapper />
+
 			<RouterProvider router={router} />
 		</WagmiConfig>
 	</React.StrictMode>

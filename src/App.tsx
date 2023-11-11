@@ -1,25 +1,22 @@
-import { useNavigate } from "react-router-dom"
-import { Button } from "@/components/ui/button"
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
-const types = ['Permission', 'Intents'] as const
+const types = ["Permission", "Intents"] as const;
 
 export default function App() {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    return (
-        <>
-            <h1>Emporium Playground</h1>
+  return (
+    <>
+      <h1>Plug Playground</h1>
 
-            <div>
-                {types.map((type) => (
-                    <Button
-                        key={type}
-                        onClick={() => navigate(`/${type.toLowerCase()}`)}
-                    >
-                        {type}
-                    </Button>
-                ))}
-            </div>
-        </>
-    )
+      <div>
+        {types.map((type) => (
+          <Button key={type} onClick={() => navigate(`/${type.toLowerCase()}`)}>
+            {type}
+          </Button>
+        ))}
+      </div>
+    </>
+  );
 }

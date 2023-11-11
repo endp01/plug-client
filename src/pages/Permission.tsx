@@ -6,7 +6,6 @@ import { useAccount, useSignTypedData } from 'wagmi'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { DEFAULT_PERMISSION } from '@/lib/constants'
-import { useWeb3Modal } from '@web3modal/wagmi/react'
 
 import { getConnector } from '../../../server/src/connector'
 
@@ -15,7 +14,6 @@ export default function Permission<
 		connector: ReturnType<typeof getConnector>
 	}
 >({ connector }: P) {
-	const { open } = useWeb3Modal()
 	const { address } = useAccount()
 
 	const [query, setQuery] = useState(
@@ -56,11 +54,6 @@ export default function Permission<
 
 	return (
 		<>
-			<Button onClick={() => open({ view: 'Networks' })}>Networks</Button>
-			<Button onClick={() => open()}>Connect</Button>
-
-			<p>Connected Address: {address ? address : 'Not Connected'}</p>
-
 			<form onSubmit={handleSubmit} className="space-y-8">
 				<label htmlFor="name">
 					Permission

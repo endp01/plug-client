@@ -13,8 +13,8 @@ import { getConnector } from "../../server/src/connector";
 import { Wrapper } from "./components/wrapper";
 
 import App from "./App";
-import Intents from "./pages/Intents";
-import Permission from "./pages/Permission";
+import Plugs from "./pages/Plugs";
+import Pin from "./pages/Pin";
 
 import "./utils";
 import "./index.css";
@@ -34,8 +34,8 @@ const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata });
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
-  { path: "/permission", element: <Permission connector={connector} /> },
-  { path: "/intents", element: <Intents connector={connector} /> },
+  { path: "/pin", element: <Pin connector={connector} /> },
+  { path: "/plugs", element: <Plugs connector={connector} /> },
 ]);
 
 createWeb3Modal({ wagmiConfig, projectId, chains });

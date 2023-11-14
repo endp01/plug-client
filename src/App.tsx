@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-const types = ["Permission", "Intents"] as const;
+const types = ["Pin", "Plugs"] as const;
 
 export default function App() {
   const navigate = useNavigate();
